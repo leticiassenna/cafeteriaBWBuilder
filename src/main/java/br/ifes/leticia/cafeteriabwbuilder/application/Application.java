@@ -7,6 +7,8 @@ package br.ifes.leticia.cafeteriabwbuilder.application;
 
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Cafe;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
+import br.ifes.leticia.cafeteriabwbuilder.util.Atendente;
+import br.ifes.leticia.cafeteriabwbuilder.util.BuilderAbstrato;
 import br.ifes.leticia.cafeteriabwbuilder.util.FabricaCafe;
 
 /**
@@ -16,20 +18,16 @@ import br.ifes.leticia.cafeteriabwbuilder.util.FabricaCafe;
 public class Application {
     public static void main(String [] xxx) 
     {
-        Cafe cafe = FabricaCafe.criarCafe("Cafe Normal");
         
-        System.out.println(cafe);
+        FabricaCafe fabricaCafe = new FabricaCafe();
+        Cafe cafe = fabricaCafe.criarCafe("CafeNormal");
+        cafe.Informacao(cafe);
         
-        cafe = FabricaCafe.criarCafe("Cafe Cappuccino");
-        System.out.println(cafe);
+        cafe = fabricaCafe.criarCafe("CafeDescafeinado");
+        cafe.Informacao(cafe);
         
-        PoCafe poCafe = new PoCafe();
-        poCafe.setTipo("Soluvel");
-        System.out.println(poCafe);
-        
-        PoCafe poCafe2 = new PoCafe();
-        poCafe2.setTipo("Descafeinado");
-        System.out.println(poCafe2);
+        cafe = fabricaCafe.criarCafe("CafeCappuccino");
+        cafe.Informacao(cafe);
         
         
             

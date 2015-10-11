@@ -12,5 +12,5 @@ import br.ifes.leticia.cafeteriabwbuilder.cdp.Cafe;
  * @author Leticia
  */
 public interface Director {
-    Cafe fazerCafe(Builder atendente);
+    Cafe fazerCafe(BuilderAbstrato atendente, String cafe);
 }

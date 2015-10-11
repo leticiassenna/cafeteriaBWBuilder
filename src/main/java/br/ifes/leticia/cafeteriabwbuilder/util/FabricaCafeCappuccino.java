@@ -5,10 +5,11 @@
  */
 package br.ifes.leticia.cafeteriabwbuilder.util;
 
-import br.ifes.leticia.cafeteriabwbuilder.cdp.Agua;
+
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Cafe;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Ingrediente;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,54 +17,52 @@ import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
  */
 public class FabricaCafeCappuccino implements Fabrica{
 
-    @Override
-    public Agua criarAgua() {
-        return new Agua();
-    }
+
 
     @Override
-    public PoCafe criarPoCafe() {
+    public PoCafe criarPoCafe(String tipo) {
         return new PoCafe("Cafe Soluvel");
     }
 
     @Override
-    public Ingrediente criarIngrediente() {
+    public ArrayList<Ingrediente> criarIngrediente() {
         Cafe cafe = new Cafe();
+        
+        ArrayList<Ingrediente> ingredienteCN = new ArrayList<> ();
               
-        Ingrediente ingrediente = Ingrediente.CAFE_SOLUVEL;
-        ingrediente.setQuantidade("100g");
-        cafe.setIngrediente(ingrediente);
+        Ingrediente ingrediente = new Ingrediente("Cafe Soluvel", "100g");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.ACUCAR;
-        ingrediente.setQuantidade("200g");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Acucar", "200g");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.LEITE;
-        ingrediente.setQuantidade("100ml");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Leite", "100ml");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.AGUA;
-        ingrediente.setQuantidade("100ml");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Agua", "100ml");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.BICARBONATO;
-        ingrediente.setQuantidade("1g");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Bicarbonato", "1g");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.CHOCOLATE;
-        ingrediente.setQuantidade("50g");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Chocolate", "50g");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.CANELA;
-        ingrediente.setQuantidade("1g");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Canela", "1g");
+        ingredienteCN.add(ingrediente);
         
-        return ingrediente;
+        cafe.setIngredientes(ingredienteCN);
+        
+        return cafe.getIngredientes();
     }
 
     @Override
-    public Cafe criarCafe() {
-        return new Cafe();
+    public Cafe criarCafe(String nomeCafe) {
+        Cafe cafe = new Cafe();
+        cafe.setNome(nomeCafe);
+        cafe.setNome("Cappuccino");
+        cafe.setPreco(5);
+        return cafe;
     }
     
 }

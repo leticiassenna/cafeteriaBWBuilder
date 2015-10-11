@@ -5,32 +5,60 @@
  */
 package br.ifes.leticia.cafeteriabwbuilder.util;
 
+import br.ifes.leticia.cafeteriabwbuilder.util.FabricaCafeNormal;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Cafe;
+import br.ifes.leticia.cafeteriabwbuilder.cdp.Ingrediente;
+import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
+import java.util.ArrayList;
 
 /**
  *
  * @author Leticia
  */
-public class FabricaCafe {
+public class FabricaCafe implements Fabrica{
     
-    public static Cafe criarCafe(String nome){
-        Fabrica fabrica;
-        if (nome.equals("CafeNormal")){
-            fabrica = new FabricaCafeNormal();
-        }
-        else{
-            if (nome.equals("CafeDescafeinado")){
-                fabrica = new FabricaCafeDescafeinado();
-            }
-            else fabrica = new FabricaCafeCappuccino();
-        }
+    private Cafe cafe;
+    private Fabrica fabrica;
+    
+    @Override
+    public  Cafe criarCafe(String nome){
         
-        Cafe cafe = fabrica.criarCafe();
-        cafe.setAgua(fabrica.criarAgua());
-        cafe.setPoCafe(fabrica.criarPoCafe());
-        cafe.setIngrediente(fabrica.criarIngrediente());
+        if ("CafeNormal".equals(nome)){
+            fabrica = new FabricaCafeNormal();
+            cafe = fabrica.criarCafe(nome);
+            cafe.setIngredientes(fabrica.criarIngrediente());
+            cafe.setPoCafe(fabrica.criarPoCafe(nome));
+            
+        }
+
+        if ("CafeDescafeinado".equals(nome)){
+            fabrica = new FabricaCafeDescafeinado();
+            cafe = fabrica.criarCafe(nome);
+            cafe.setIngredientes(fabrica.criarIngrediente());
+            cafe.setPoCafe(fabrica.criarPoCafe(nome));
+            
+        }
+        if ("CafeCappuccino".equals(nome)){
+            fabrica = new FabricaCafeCappuccino();
+            cafe = fabrica.criarCafe(nome);
+            cafe.setIngredientes(fabrica.criarIngrediente());
+            cafe.setPoCafe(fabrica.criarPoCafe(nome));
+        }
         
         return cafe;
+    }
+
+    
+
+    @Override
+    public PoCafe criarPoCafe(String tipo) {
+        return new PoCafe(tipo);
+    }
+
+    @Override
+    public ArrayList<Ingrediente> criarIngrediente() {
+        return fabrica.criarIngrediente();
+        
     }
     
 }

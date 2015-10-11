@@ -5,10 +5,11 @@
  */
 package br.ifes.leticia.cafeteriabwbuilder.util;
 
-import br.ifes.leticia.cafeteriabwbuilder.cdp.Agua;
+
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Cafe;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Ingrediente;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,42 +17,43 @@ import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
  */
 public class FabricaCafeDescafeinado implements Fabrica{
 
-    @Override
-    public Agua criarAgua() {
-        return new Agua();
-    }
 
     @Override
-    public PoCafe criarPoCafe() {
+    public PoCafe criarPoCafe(String tipo) {
         return new PoCafe("Cafe Descafeinado");
     }
 
     @Override
-    public Ingrediente criarIngrediente() {
+    public ArrayList<Ingrediente> criarIngrediente() {
         Cafe cafe = new Cafe();
+         
+        ArrayList<Ingrediente> ingredienteCN = new ArrayList<> ();
                
-        Ingrediente ingrediente = Ingrediente.CAFE_DESCAFEINADO;
-        ingrediente.setQuantidade("50g");
-        cafe.setIngrediente(ingrediente);
         
-        ingrediente = Ingrediente.ACUCAR;
-        ingrediente.setQuantidade("200g");
-        cafe.setIngrediente(ingrediente);
+        Ingrediente ingrediente = new Ingrediente("Cafe Descafeinado", "50g");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.LEITE;
-        ingrediente.setQuantidade("100ml");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Acucar", "200g");
+        ingredienteCN.add(ingrediente);
         
-        ingrediente = Ingrediente.AGUA;
-        ingrediente.setQuantidade("100ml");
-        cafe.setIngrediente(ingrediente);
+        ingrediente = new Ingrediente("Leite", "100ml");
+        ingredienteCN.add(ingrediente);
+        
+        ingrediente = new Ingrediente("Agua", "100ml");
+        ingredienteCN.add(ingrediente);
+        
+        cafe.setIngredientes(ingredienteCN);
               
-        return ingrediente;
+        return cafe.getIngredientes();
     }
 
     @Override
-    public Cafe criarCafe() {
-        return new Cafe();
+    public Cafe criarCafe(String nomeCafe) {
+        Cafe cafe = new Cafe();
+        cafe.setNome(nomeCafe);
+        cafe.setNome("Descafeinado");
+        cafe.setPreco(3);
+        return cafe;
     }
     
 }

@@ -5,24 +5,20 @@
  */
 package br.ifes.leticia.cafeteriabwbuilder.cdp;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Leticia
  */
 public class Cafe {
     
-    private Agua agua;
+    private String nome;
     private PoCafe poCafe;
-    private Ingrediente ingrediente;
+    private ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+    private float preco;
 
 
-    public Agua getAgua() {
-        return agua;
-    }
-
-    public void setAgua(Agua agua) {
-        this.agua = agua;
-    }
 
     public PoCafe getPoCafe() {
         return poCafe;
@@ -32,17 +28,44 @@ public class Cafe {
         this.poCafe = poCafe;
     }
 
-    public Ingrediente getIngrediente() {
-        return ingrediente;
+   
+    public ArrayList<Ingrediente> getIngredientes() {
+        return ingredientes;
     }
 
-    public void setIngrediente(Ingrediente ingrediente) {
-        this.ingrediente = ingrediente;
+    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+       
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
     
-    @Override
-    public String toString() {
-        return "Cafe{" + "agua=" + agua + ", po de cafe=" + poCafe + ", ingredientes=" + ingrediente + '}';
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
+    
+    public void Informacao(Cafe cafe) {
+        System.out.println("Cafe {" + "tipo = " + cafe.getNome() +
+                ", po de cafe = " + cafe.getPoCafe().getTipo() + 
+                 ", preco = " + cafe.getPreco() + '}');
+        for (Ingrediente item: ingredientes){
+            
+            System.out.println(item.getNome()+" = "+ item.getQuantidade());
+        }
+        
+    }
+
+
 }

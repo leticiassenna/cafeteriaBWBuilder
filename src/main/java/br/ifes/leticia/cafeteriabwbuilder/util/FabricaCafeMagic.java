@@ -6,6 +6,7 @@
 package br.ifes.leticia.cafeteriabwbuilder.util;
 
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Cafe;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
 import java.util.HashMap;
 
 /**
@@ -25,7 +26,7 @@ public class FabricaCafeMagic {
 
         Atendente atendente = new Atendente();
         Builder builder = builders.get(nome);
-        Cafe cafe = atendente.fazerCafe(builder);
+        Cafe cafe = atendente.fazerCafe((BuilderAbstrato) builder, nome);
        
         return cafe;
     }

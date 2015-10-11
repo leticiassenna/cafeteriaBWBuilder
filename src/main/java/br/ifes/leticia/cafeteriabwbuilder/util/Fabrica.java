@@ -5,10 +5,11 @@
  */
 package br.ifes.leticia.cafeteriabwbuilder.util;
 
-import br.ifes.leticia.cafeteriabwbuilder.cdp.Agua;
+
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Cafe;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.Ingrediente;
 import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,9 +17,9 @@ import br.ifes.leticia.cafeteriabwbuilder.cdp.PoCafe;
  */
 public interface Fabrica {
     
-    public Agua criarAgua();
-    public PoCafe criarPoCafe();
-    public Ingrediente criarIngrediente();
-    public Cafe criarCafe();
+    
+    public PoCafe criarPoCafe(String tipo);
+    public ArrayList<Ingrediente> criarIngrediente();
+    public Cafe criarCafe(String nomeCafe);
     
 }

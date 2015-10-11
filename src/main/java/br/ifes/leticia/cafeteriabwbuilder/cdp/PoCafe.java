@@ -13,26 +13,14 @@ public class PoCafe {
     private String tipo;
     
     public PoCafe(String nome){
-        
+        this.tipo = nome;
     }
 
-    public PoCafe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     * @return the tipo
-     */
+ 
     public String getTipo() {
         return tipo;
     }
 
-    /**
-     * @param tipo the tipo to set
-     */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
     
     
 }

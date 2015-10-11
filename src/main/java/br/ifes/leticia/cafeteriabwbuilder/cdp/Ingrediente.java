@@ -9,17 +9,19 @@ package br.ifes.leticia.cafeteriabwbuilder.cdp;
  *
  * @author Leticia
  */
-public enum Ingrediente {
-    CAFE_SOLUVEL, CAFE_DESCAFEINADO, ACUCAR, LEITE,
-    BICARBONATO, CHOCOLATE, CANELA, AGUA;
+public class Ingrediente {
+    private String nome;
     public String quantidade;
 
+    public Ingrediente(String nome, String quantidade) {
+        this.nome = nome;
+        this.quantidade = quantidade;
+    }
+    public String getNome() {
+        return nome;
+    }
     public String getQuantidade() {
         return quantidade;
-    }
-
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
     }
     
     
